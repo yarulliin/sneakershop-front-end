@@ -1,0 +1,14 @@
+@import 'mixins';
+
+:host {
+  @include grid(1);
+
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+form {
+  @include grid(1, 16px, 16px);
+}

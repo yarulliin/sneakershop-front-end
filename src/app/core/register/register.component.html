@@ -1,0 +1,38 @@
+<section class="register">
+  <form class="b-form"
+        [formGroup]="registerForm">
+    <app-input formControlName="name"
+               placeholder="Введите имя"
+               label="Имя"
+               type="text"
+               [isRequired]="true"
+               [errorMessages]="errorMessages.name"
+               [allowClear]="true"></app-input>
+    <app-input formControlName="email"
+               placeholder="Введите email"
+               label="Email"
+               type="email"
+               [isRequired]="true"
+               [errorMessages]="errorMessages.email"
+               [allowClear]="true"></app-input>
+    <app-input formControlName="password"
+               placeholder="Введите пароль"
+               label="Пароль"
+               type="password"
+               [isRequired]="true"
+               [errorMessages]="errorMessages.password"
+               [allowClear]="true"></app-input>
+    <app-checkbox *role="ROLES.ADMIN"
+                  formControlName="role"
+                  label="Администратор"></app-checkbox>
+  </form>
+
+  <button class="tui-space_right-3 tui-space_bottom-3"
+          tuiButton
+          type="button"
+          appearance="primary"
+          [disabled]="isSaveButtonDisabled"
+          (click)="register()">
+    Зарегистрироваться
+  </button>
+</section>

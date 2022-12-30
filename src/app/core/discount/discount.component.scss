@@ -1,0 +1,15 @@
+@import 'mixins';
+
+:host {
+  padding: 16px;
+}
+
+.discount {
+  @include grid(1, 16px);
+
+  &__button {
+    display: flex;
+    justify-self: flex-end;
+    width: fit-content;
+  }
+}

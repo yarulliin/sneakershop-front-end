@@ -1,0 +1,50 @@
+<a class="admin"
+   tuiIsland>
+  <app-accordion [items]="accordionConfig"
+                 (emitChangeTab)="changeTab()">
+    <ng-template>
+      <app-tabs [activeItemIndex]="activeItemIndex"
+                [tabs]="tabsConfig"
+                (emitChangeTab)="changeTab($event)"></app-tabs>
+      <app-info-edit *ngIf="!activeItemIndex"
+                     (emitSave)="createUser($event)"></app-info-edit>
+      <ng-container *ngIf="user$ | async as user">
+        <app-info-edit *ngIf="activeItemIndex === 1"
+                       [withSearch]="!user?.userId"
+                       [item]="user"
+                       (emitGetData)="getUser($event)"
+                       (emitSave)="updateUser($event)"></app-info-edit>
+      </ng-container>
+      <app-delete-item *ngIf="activeItemIndex === 2"
+                       (emitDelete)="deleteUser($event)"></app-delete-item>
+    </ng-template>
+    <ng-template>
+      <app-tabs [activeItemIndex]="activeItemIndex"
+                [tabs]="tabsConfig"
+                (emitChangeTab)="changeTab($event)"></app-tabs>
+      <app-product *ngIf="!activeItemIndex"
+                   (emitSave)="createCatalogItem($event)"></app-product>
+      <app-product *ngIf="activeItemIndex === 1"
+                   (emitSave)="updateCatalogItem($event)"></app-product>
+      <app-delete-item *ngIf="activeItemIndex === 2"
+                       (emitDelete)="deleteCatalogItem($event)"></app-delete-item>
+    </ng-template>
+    <ng-template>
+      <app-tabs [activeItemIndex]="activeItemIndex"
+                [tabs]="tabsConfig"
+                (emitChangeTab)="changeTab($event)"></app-tabs>
+      <app-discount *ngIf="!activeItemIndex"
+                    (emitSave)="createDiscount($event)"></app-discount>
+      <ng-container *ngIf="discount$ | async as discount">
+        <app-discount *ngIf="activeItemIndex === 1"
+                      [searchItem]="!discount?._id"
+                      [item]="discount"
+                      (emitSave)="updateDiscount($event)"
+                      (emitSearch)="searchDiscount($event)"></app-discount>
+      </ng-container>
+      <app-delete-item *ngIf="activeItemIndex === 2"
+                       label="Название"
+                       (emitDelete)="deleteDiscount($event)"></app-delete-item>
+    </ng-template>
+  </app-accordion>
+</a>

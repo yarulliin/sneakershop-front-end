@@ -1,0 +1,23 @@
+<tui-input-files *ngIf="withInput"
+                 [accept]="accept"
+                 [multiple]="multiple"
+                 [maxFileSize]="maxFileSize"
+                 [(ngModel)]="formValue"
+                 (reject)="onReject($event)">
+</tui-input-files>
+
+<tui-files class="tui-space_top-1"
+           [max]="max">
+  <tui-file *ngFor="let file of formValue"
+            [file]="file"
+            [showSize]="showSize"
+            (removed)="removeFile(file)">
+  </tui-file>
+
+  <tui-file *ngFor="let file of rejectedFiles"
+            state="error"
+            [file]="file"
+            [showSize]="showSize"
+            (removed)="clearRejected(file)">
+  </tui-file>
+</tui-files>

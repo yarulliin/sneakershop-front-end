@@ -1,0 +1,16 @@
+<a class="menu"
+   tuiIsland>
+  <app-avatar [text]="user?.name || 'Войти'"
+              size="xl"
+              [rounded]="true"
+              [routerLink]="user?.id ? ['profile', user?.id!] : 'login'"></app-avatar>
+  <a tuiLink
+     [routerLink]="['profile', user?.id!, 'favorites']">Избранное</a>
+  <a tuiLink
+     [routerLink]="['profile', user?.id!, 'cart']">Корзина</a>
+  <a tuiLink
+     routerLink="admin">Админ. панель</a>
+  <a *ngIf="user?.name"
+     tuiLink
+     (click)="logout()">Выйти</a>
+</a>

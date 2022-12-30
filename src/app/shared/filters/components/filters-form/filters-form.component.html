@@ -1,0 +1,35 @@
+<form [formGroup]="searchForm">
+  <app-input [formControlName]="filtersFormControlNames.NAME"
+             label="Поиск по названию"
+             icon="tuiIconSearchLarge"
+             iconAlign="right"
+             [allowClear]="true">
+  </app-input>
+  <app-select [formControlName]="filtersFormControlNames.BRAND"
+              [items]="brand"
+              [multi]="true"
+              placeholder="Бренд"
+              [isStringArray]="true"></app-select>
+  <app-select [formControlName]="filtersFormControlNames.SEX"
+              [items]="sex"
+              [multi]="true"
+              placeholder="Пол"
+              [isStringArray]="true"></app-select>
+  <app-select [formControlName]="filtersFormControlNames.SIZE"
+              [items]="sizes"
+              [multi]="true"
+              placeholder="Размер"
+              [isStringArray]="true"></app-select>
+  <app-slider [formControlName]="filtersFormControlNames.PRICE"
+              placeholder="Цена"
+              [min]="1"
+              [max]="50000"></app-slider>
+</form>
+
+<button class="tui-space_right-3 tui-space_bottom-3"
+        tuiButton
+        type="button"
+        appearance="primary"
+        (click)="search()">
+  Поиск
+</button>

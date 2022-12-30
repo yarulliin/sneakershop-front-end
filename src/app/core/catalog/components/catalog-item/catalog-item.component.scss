@@ -1,0 +1,50 @@
+@import 'mixins';
+
+.catalog-item {
+  @include grid;
+
+  ::ng-deep {
+    svg {
+      transition: .4s;
+    }
+  }
+
+  width: fit-content;
+
+  &__actions {
+    direction: rtl;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    padding-top: 8px;
+    text-align: right;
+  }
+
+  &__price {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  &__favorites {
+    ::ng-deep {
+      svg {
+        color: red;
+      }
+    }
+  }
+
+  &__sex {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  app-icon {
+    ::ng-deep:hover svg {
+      color: red
+    }
+  }
+}

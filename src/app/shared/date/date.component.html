@@ -1,0 +1,11 @@
+<tui-input-date tuiUnfinishedValidator="Finish filling the field"
+                [tuiTextfieldCleaner]="allowClear"
+                [min]="min"
+                [max]="max"
+                [(ngModel)]="formValue">
+  {{ label }}
+</tui-input-date>
+<tui-error ngDefaultControl
+           [(ngModel)]="formValue"
+           [error]="getErrorTips()">
+</tui-error>

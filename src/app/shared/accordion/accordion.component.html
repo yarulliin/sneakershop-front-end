@@ -1,0 +1,13 @@
+<tui-accordion [rounded]="rounded"
+               [closeOthers]="closeOthers">
+  <tui-accordion-item *ngFor="let item of items; let i=index"
+                      [open]="open"
+                      (openChange)="changeTab()">
+    {{ item?.label }}
+    <ng-template tuiAccordionItemContent>
+      <ng-container [ngTemplateOutlet]="content.get(i)!"
+                    [ngTemplateOutletContext]="{ $implicit: item }">
+      </ng-container>
+    </ng-template>
+  </tui-accordion-item>
+</tui-accordion>

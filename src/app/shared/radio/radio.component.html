@@ -1,0 +1,15 @@
+<tui-radio-block *ngIf="block; else defaultRadio"
+                 [contentAlign]="contentAlign"
+                 [size]="size"
+                 [item]="item"
+                 [(ngModel)]="formValue">
+  <ng-container *ngIf="label">{{ label }}</ng-container>
+</tui-radio-block>
+
+<ng-template #defaultRadio>
+  <tui-radio-labeled class="tui-space_bottom-3"
+                     [item]="item"
+                     [(ngModel)]="formValue">
+    <ng-container *ngIf="label">{{ label }}</ng-container>
+  </tui-radio-labeled>
+</ng-template>

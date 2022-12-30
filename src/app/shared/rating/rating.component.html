@@ -1,0 +1,12 @@
+<span *ngIf="label"
+      class="textfield-placeholder"
+      [class.tui-required]="isRequired">{{ label }}</span>
+<tui-rating class="rating"
+            [(ngModel)]="formValue"
+            [readOnly]="isReadonly"
+            [disabled]="isDisabled"
+            [iconNormal]="iconNormal"
+            [iconFilled]="iconFilled"
+            [min]="min"
+            [max]="max">
+</tui-rating>

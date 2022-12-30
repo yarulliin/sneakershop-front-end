@@ -1,0 +1,12 @@
+<tui-loader [overlay]="true"
+            [showLoader]="(isLoaderActive$ | async)!">
+  <section class="header">
+    <app-header [withMenuButton]="withMenuButton"
+                (emitOpenMenu)="toggleMenu($event)"></app-header>
+    <app-menu *ngIf="isMenuOpen"
+              [@tuiSlideInRight]="getAnimation()"></app-menu>
+  </section>
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
+</tui-loader>

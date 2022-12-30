@@ -1,0 +1,19 @@
+@import 'mixins';
+
+.menu {
+  @include grid(1, 8px);
+
+  padding: 40px 80px;
+  box-shadow: 0 0.75rem 2.25rem rgb(0 0 0 / 20%);
+  justify-content: center;
+
+  > a {
+    display: flex;
+    justify-self: center;
+    text-align: center;
+  }
+
+  app-avatar {
+    padding-bottom: 16px;
+  }
+}

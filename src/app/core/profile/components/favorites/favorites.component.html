@@ -1,0 +1,20 @@
+<ng-container *ngIf="favorites?.length; else noItems">
+  <a *ngFor="let item of favorites"
+     class="card"
+     tuiIsland
+     [routerLink]="['/catalog', item?._id!]">
+    <app-avatar [avatarUrl]="(item.brand | image: item.name)[0]"
+                [size]="'m'"></app-avatar>
+    <section>
+      <span>{{ item?.brand }} {{ item?.name }}</span>
+      <span>{{ item?.price?.price }} {{ item?.price?.currency! | tuiCurrency }}</span>
+    </section>
+    <app-icon iconName="tuiIconHeartFilled"
+              class="icon"
+              (click)="removeFromFavorites(item, $event)"></app-icon>
+  </a>
+</ng-container>
+
+<ng-template #noItems>
+  <span class="no-data">В избранных нет товаров</span>
+</ng-template>

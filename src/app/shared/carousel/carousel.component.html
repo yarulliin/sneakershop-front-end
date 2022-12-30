@@ -1,0 +1,15 @@
+<tui-carousel [duration]="duration"
+              [(index)]="index">
+  <ng-container *ngFor="let item of items">
+    <ng-container *tuiItem
+                  [ngTemplateOutlet]="content"
+                  [ngTemplateOutletContext]="{ $implicit: item }">
+    </ng-container>
+  </ng-container>
+</tui-carousel>
+<app-pagination class="pagination"
+                size="s"
+                [totalPages]="items?.length!"
+                [currentPage]="index"
+                (emitChangePage)="changePage($event)">
+</app-pagination>

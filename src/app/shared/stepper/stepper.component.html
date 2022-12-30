@@ -1,0 +1,11 @@
+<tui-stepper [orientation]="orientation"
+             [(activeItemIndex)]="activeItemIndex"
+             (activeItemIndexChange)="changeIndex($event)">
+  <button *ngFor="let prop of config"
+          tuiStep
+          [state]="prop?.state || 'normal'"
+          [disabled]="prop?.disabled"
+          [icon]="prop?.icon || ''">
+    {{ prop?.label }}
+  </button>
+</tui-stepper>

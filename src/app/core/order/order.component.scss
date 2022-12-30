@@ -1,0 +1,28 @@
+@import 'mixins';
+
+:host {
+  position: relative;
+  display: flex;
+  min-height: 100%;
+}
+
+a {
+  width: 50%;
+  margin: 0 auto;
+  box-shadow: 0 0.75rem 2.25rem rgb(0 0 0 / 20%);
+
+  app-stepper::ng-deep {
+
+    tui-stepper {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--tui-base-03);
+    }
+  }
+}
+
+.button {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+}

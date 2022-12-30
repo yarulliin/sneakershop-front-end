@@ -1,0 +1,32 @@
+<section class="reviews">
+  <section class="reviews__button"
+           (click)="toggleCreate()">
+    Создать отзыв
+    <app-icon iconName="tuiIconEdit"></app-icon>
+  </section>
+  <app-create-review *ngIf="isCreate"
+                     [@tuiHeightCollapse]="getAnimation()"
+                     (emitCreateReview)="createReview($event)"
+                     (emitCancelCreate)="toggleCreate()"></app-create-review>
+  <a *ngFor="let review of reviews.data"
+     tuiIsland
+     class="review">
+    <section class="review__header">
+      {{ review?.userName }}
+      <app-rating iconNormal="tuiIconStar"
+                  iconFilled="tuiIconStarFilled"
+                  [ngModel]="review?.rate"
+                  [isReadonly]="true"></app-rating>
+    </section>
+    <span *ngIf="review?.description"
+          class="review__description">
+      {{ review?.description }}
+    </span>
+  </a>
+
+  <app-pagination *ngIf="reviews?.totalElements! > reviews?.size!"
+                  [currentPage]="+reviews?.page!"
+                  [totalPages]="+reviews?.totalPages!"
+                  (emitChangePage)="changePage($event)"></app-pagination>
+</section>
+

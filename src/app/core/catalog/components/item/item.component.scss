@@ -1,0 +1,89 @@
+@import 'mixins';
+
+:host {
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+
+  app-avatar::ng-deep {
+    tui-avatar {
+      width: 14rem;
+      height: 14rem;
+    }
+  }
+
+  ::ng-deep {
+    .t-item {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    button {
+      width: max-content;
+    }
+
+    svg {
+      transition: .4s;
+    }
+  }
+}
+
+.item {
+  width: 50%;
+  box-shadow: 0 0.75rem 2.25rem rgb(0 0 0 / 20%);
+
+  &__info {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  &__column {
+    @include grid(1, 8px);
+
+    width: 50%;
+    height: fit-content;
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+
+    > button {
+      margin-right: 8px;
+    }
+  }
+
+  &__favorites {
+    ::ng-deep {
+      svg {
+        color: red;
+      }
+    }
+  }
+
+  app-icon {
+    cursor: pointer;
+
+    ::ng-deep:hover svg {
+      color: red
+    }
+  }
+
+  &__sex {
+    width: fit-content;
+  }
+}
+
+.row {
+  display: flex;
+
+  > :not(:first-child) {
+    margin-left: 12px;
+  }
+}

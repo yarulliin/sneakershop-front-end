@@ -1,0 +1,35 @@
+<section class="profile-info"
+         [formGroup]="form">
+
+  <app-search-item *ngIf="withSearch; else infoForm"
+                   label="Id"
+                   (emitSearch)="getData($event)"></app-search-item>
+
+  <ng-template #infoForm>
+    <app-input [formControlName]="ProfileInfoFormControlNames.NAME"
+               label="Имя" ></app-input>
+    <app-input [formControlName]="ProfileInfoFormControlNames.EMAIL"
+               label="Email" ></app-input>
+    <app-input [formControlName]="ProfileInfoFormControlNames.PASSWORD"
+               type="password"
+               label="Пароль"></app-input>
+    <app-input [formControlName]="ProfileInfoFormControlNames.PHONE"
+               label="Телефон"></app-input>
+    <app-date [formControlName]="ProfileInfoFormControlNames.DATE_OF_BIRTH"
+              label="Дата рождения"></app-date>
+    <app-card [formControlName]="ProfileInfoFormControlNames.CARD"></app-card>
+    <section class="profile-info__footer">
+      <section class="radio">
+        <app-radio [formControlName]="ProfileInfoFormControlNames.SEX"
+                   [item]="true"
+                   label="Мужской"></app-radio>
+        <app-radio [formControlName]="ProfileInfoFormControlNames.SEX"
+                   [item]="false"
+                   label="Женский"></app-radio>
+      </section>
+      <button tuiButton
+              appearance="secondary"
+              (click)="save()">Сохранить</button>
+    </section>
+  </ng-template>
+</section>

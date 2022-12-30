@@ -1,0 +1,35 @@
+@import "mixins";
+
+:host::ng-deep {
+  .tui-island:after {
+    content: none;
+  }
+}
+
+.reviews {
+  @include grid(1, 8px);
+
+  &__button {
+    text-align: right;
+    cursor: pointer;
+  }
+}
+
+.review {
+  @include grid(1, 8px);
+
+  box-shadow: 0 0.25rem 1.5rem rgb(0 0 0 / 12%);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__description {
+    padding-top: 8px;
+    border-top: 1px solid rgb(0 0 0 / 12%);
+    white-space: pre-line;
+    overflow-x: hidden;
+  }
+}

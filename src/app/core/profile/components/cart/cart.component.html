@@ -1,0 +1,35 @@
+<ng-container *ngIf="cart?.length; else noItems">
+  <a *ngFor="let cartItem of cart"
+     class="cart"
+     tuiIsland
+     [routerLink]="['/catalog', cartItem?._id!]">
+    <section class="cart__info">
+      <app-avatar [avatarUrl]="(cartItem.brand | image: cartItem.name)[0]"
+                  [size]="'m'"></app-avatar>
+      <section class="cart__info text">
+        <span>{{ cartItem?.brand }} {{ cartItem?.name }}</span>
+        <span>{{ cartItem?.price?.price }} {{ cartItem?.price?.currency! | tuiCurrency }}</span>
+      </section>
+    </section>
+    <section class="cart__item">
+      <span>Размер: {{ cartItem?.size }}</span>
+      <span>Количество: {{ cartItem?.quantity }}</span>
+      <span class="cart__color">
+        Цвет: <div class="cart__item-color"
+                   [style.backgroundColor]="cartItem?.color"
+                   [tuiHint]="cartItem?.color!"></div></span>
+    </section>
+    <app-icon iconName="tuiIconCloseLarge"
+              (click)="removeFromCart(cartItem, $event)"></app-icon>
+  </a>
+</ng-container>
+
+<section *ngIf="cart?.length"
+         class="cart__footer">
+  <button tuiButton
+          [routerLink]="['/order']">Купить</button>
+</section>
+
+<ng-template #noItems>
+  <span class="no-data">В корзине нет товаров</span>
+</ng-template>

@@ -1,0 +1,10 @@
+<tui-avatar class="tui-space_bottom-3"
+            [text]="text"
+            [autoColor]="autoColor"
+            [rounded]="rounded"
+            [size]="size"
+            [avatarUrl]="avatarUrl">
+</tui-avatar>
+<a *ngIf="routerLink"
+   tuiLink
+   [routerLink]="routerLink">{{ text }}</a>

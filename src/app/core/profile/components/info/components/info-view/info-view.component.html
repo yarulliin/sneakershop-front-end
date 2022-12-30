@@ -1,0 +1,31 @@
+<section class="avatar">
+  <app-avatar [text]="user?.name!"
+              size="xl"
+              [rounded]="true"></app-avatar>
+  <label tuiLabel
+         label="Имя">
+    {{ user?.name! }}
+  </label>
+</section>
+<section class="info">
+  <label tuiLabel
+         label="Email">
+    {{ user?.email! }}
+  </label>
+  <label tuiLabel
+         label="Номер телефона">
+    {{ user?.phone! }}
+  </label>
+  <label tuiLabel
+         label="Пол">
+    {{ user?.sex! }}
+  </label>
+  <label tuiLabel
+         label="Дата рождения">
+    {{ user?.dateOfBirth! }}
+  </label>
+</section>
+
+<app-icon iconName="tuiIconEdit"
+          tooltip="Редактировать"
+          (click)="toggleEdit()"></app-icon>

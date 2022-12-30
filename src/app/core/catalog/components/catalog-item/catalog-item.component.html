@@ -1,0 +1,18 @@
+<a class="catalog-item"
+   tuiIsland
+   [hoverable]="true">
+  <app-avatar [avatarUrl]="(item.brand | image: item.name)[0]"
+              [size]="'xxl'"></app-avatar>
+  <span class="catalog-item__name">{{ item.brand }} {{ item?.name }}</span>
+  <span class="catalog-item__price">{{ item.price.price }} {{ item.price.currency | tuiCurrency }}</span>
+  <section class="catalog-item__actions">
+    <app-icon [iconName]="isItemInFavorites ? 'tuiIconHeartFilled' : 'tuiIconHeart'"
+              [ngClass]="{ 'catalog-item__favorites': isItemInFavorites }"
+              (click)="setToFavorites(item, $event)"></app-icon>
+  </section>
+
+  <app-badge class="catalog-item__sex"
+             [tuiHint]="getSexValue(item.sex)"
+             [value]="getSexAbbreviationValue(item.sex)"
+             status="info"></app-badge>
+</a>

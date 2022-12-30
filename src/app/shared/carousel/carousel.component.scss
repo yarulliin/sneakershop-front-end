@@ -1,0 +1,7 @@
+@import 'mixins';
+
+:host {
+  @include grid(1, 16px);
+
+  width: 100%;
+}

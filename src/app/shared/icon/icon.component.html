@@ -1,0 +1,14 @@
+<tui-marker-icon *ngIf="isMarker; else defaultIcon"
+                 class="icon"
+                 [size]="size"
+                 [mode]="mode"
+                 [tuiHint]="tooltip"
+                 [src]="iconName">
+</tui-marker-icon>
+
+<ng-template #defaultIcon>
+  <tui-svg class="icon"
+           [tuiHint]="tooltip"
+           [src]="iconName">
+  </tui-svg>
+</ng-template>

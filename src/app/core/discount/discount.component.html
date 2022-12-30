@@ -1,0 +1,21 @@
+<section class="discount"
+         [formGroup]="discountForm">
+  <ng-container *ngIf="searchItem; else create">
+    <app-search-item label="Название"
+                     (emitSearch)="search($event)"></app-search-item>
+  </ng-container>
+
+  <ng-template #create>
+    <app-input [formControlName]="DiscountFormControlNames.DISCOUNT_NAME"
+               label="Название"></app-input>
+    <app-input [formControlName]="DiscountFormControlNames.DISCOUNT_AMOUNT"
+               label="Размер скидки"></app-input>
+    <app-date [formControlName]="DiscountFormControlNames.DISCOUNT_DURATION"
+              label="Окончание действия скидки"></app-date>
+
+    <button class="discount__button"
+            tuiButton
+            appearance="secondary"
+            (click)="save()">Сохранить</button>
+  </ng-template>
+</section>

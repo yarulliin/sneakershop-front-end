@@ -1,0 +1,16 @@
+<tui-tabs [(activeItemIndex)]="activeItemIndex"
+          (activeItemIndexChange)="changePage($event)">
+  <ng-container *ngFor="let tab of tabs">
+    <button *ngIf="tab?.routerLink; else defaultButton"
+            tuiTab
+            [routerLink]="tab.routerLink!">
+      {{ tab.caption }}
+    </button>
+
+    <ng-template #defaultButton>
+      <button tuiTab>
+        {{ tab.caption }}
+      </button>
+    </ng-template>
+  </ng-container>
+</tui-tabs>

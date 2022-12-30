@@ -1,0 +1,69 @@
+<a *ngIf="item$ | async as item"
+   class="item"
+   tuiIsland>
+  <section class="item__info">
+    <section class="item__column">
+      <app-carousel [items]="item.brand | image: item.name">
+        <ng-template #content
+                     let-item>
+          <app-avatar [avatarUrl]="item"
+                      [size]="'xxl'"></app-avatar>
+        </ng-template>
+      </app-carousel>
+    </section>
+    <section class="item__column"
+             [formGroup]="form">
+      <span class="item__name">{{ item?.brand }} {{ item?.name }}</span>
+      <span class="item__price">{{ item?.price?.price }} {{ item?.price?.currency! | tuiCurrency }}</span>
+      <app-badge class="item__sex"
+                 [tuiHint]="getSexValue(item.sex)"
+                 [value]="getSexAbbreviationValue(item.sex)"
+                 status="primary"></app-badge>
+      <app-line-clamp *ngIf="item?.description"
+                      [content]="item.description"
+                      [lineHeight]="24"
+                      [linesLimit]="3"></app-line-clamp>
+      <app-select #size
+                  [items]="item?.sizes!"
+                  formControlName="size"
+                  displayName="size"
+                  placeholder="Размер"
+                  size="m"
+                  valueName="size"></app-select>
+      <section *ngIf="size.formValue"
+               class="row">
+        <app-badge *ngFor="let color of findColors(item.sizes, size.formValue) || [{ color: 'red', quantity: 10 }]"
+                   [color]="color.color"
+                   [tuiHint]="color.color"
+                   status="primary"
+                   (click)="setColor(color.color)"></app-badge>
+      </section>
+      <app-input-count formControlName="quantity"
+                       label="Количество"
+                       size="m"
+                       [max]="getMax(item?.sizes!, size.formValue)"></app-input-count>
+      <section class="item__footer">
+        <button tuiButton
+                size="m"
+                type="button"
+                appearance="primary"
+                [disabled]="isAddToCartButtonDisabled"
+                (click)="addToCart(item)">
+          Добавить в корзину
+        </button>
+        <app-icon [iconName]="isItemInFavorites(item) ? 'tuiIconHeartFilled' : 'tuiIconHeart'"
+                  [ngClass]="{ 'item__favorites': isItemInFavorites(item) }"
+                  (click)="setToFavorites(item, $event)"></app-icon>
+      </section>
+    </section>
+  </section>
+
+  <app-accordion *ngIf="reviews$ | async as reviews"
+                 [items]="reviewsConfig">
+    <ng-template>
+      <app-reviews [reviews]="reviews"
+                   (emitCreateReview)="createReview($event)"
+                   (emitChangePage)="getReviews($event)"></app-reviews>
+    </ng-template>
+  </app-accordion>
+</a>

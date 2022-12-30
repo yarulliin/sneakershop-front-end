@@ -1,0 +1,19 @@
+<tui-pagination *ngIf="!customContent?.length; else custom"
+                [size]="size"
+                [length]="totalPages"
+                [index]="currentPage"
+                (indexChange)="changePage($event)">
+</tui-pagination>
+
+<ng-template #custom>
+  <tui-pagination [length]="totalPages"
+                  [index]="currentPage"
+                  [content]="paginationContent"
+                  (indexChange)="changePage($event)">
+  </tui-pagination>
+</ng-template>
+
+<ng-template #paginationContent
+             let-index>
+  {{ customContent[index] }}
+</ng-template>

@@ -1,0 +1,17 @@
+<a tuiIsland
+   class="filters">
+  <app-filters-form *ngIf="isFiltersFormOpened"
+                    [@tuiWidthCollapse]="getAnimation()"
+                    (emitSearch)="search($event)"></app-filters-form>
+  <section class="filters__button-container">
+    <button tuiButton
+            type="button"
+            appearance="flat"
+            size="m"
+            (click)="toggleFiltersForm($event, true)">
+      <app-icon iconName="tuiIconSearch"
+                [tooltip]="isFiltersFormOpened ? 'Hide filters' : 'Show filters'">
+      </app-icon>
+    </button>
+  </section>
+</a>

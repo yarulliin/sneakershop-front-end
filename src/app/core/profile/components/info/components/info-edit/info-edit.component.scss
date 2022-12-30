@@ -1,0 +1,27 @@
+@import 'mixins';
+
+:host {
+  width: 100%;
+  padding: 16px;
+
+  ::ng-deep {
+    tui-input-card-grouped {
+      width: 100%;
+    }
+  }
+}
+
+.profile-info {
+  @include grid(1, 16px);
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+
+    .radio {
+      @include grid(2, 8px, 8px);
+
+      align-self: center;
+    }
+  }
+}

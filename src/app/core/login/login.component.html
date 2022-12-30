@@ -1,0 +1,33 @@
+<section class="login">
+  <form class="b-form"
+        [formGroup]="loginForm">
+    <app-input formControlName="email"
+               placeholder="Введите email"
+               label="Email"
+               type="email"
+               [isRequired]="true"
+               [errorMessages]="errorMessages.email"
+               [allowClear]="true"></app-input>
+    <app-input formControlName="password"
+               placeholder="Введите пароль"
+               label="Пароль"
+               type="password"
+               [isRequired]="true"
+               [errorMessages]="errorMessages.password"
+               [allowClear]="true"></app-input>
+  </form>
+
+  <button class="tui-space_right-3 tui-space_bottom-3"
+          tuiButton
+          type="button"
+          appearance="primary"
+          [disabled]="isSaveButtonDisabled"
+          (click)="login()">
+    Войти
+  </button>
+  <span>
+    Нет аккаунта?
+    <a tuiLink
+       [routerLink]="['/', ROUTE_CONFIG.register.path]">Регистрация</a>
+  </span>
+</section>

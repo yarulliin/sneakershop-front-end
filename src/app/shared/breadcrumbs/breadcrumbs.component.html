@@ -1,0 +1,9 @@
+<tui-breadcrumbs [size]="size">
+  <ng-container *ngFor="let prop of config">
+    <a *tuiBreadcrumb
+       tuiLink
+       [routerLink]="prop.routerLink">
+      {{ prop.caption }}
+    </a>
+  </ng-container>
+</tui-breadcrumbs>

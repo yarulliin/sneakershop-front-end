@@ -1,0 +1,32 @@
+<tui-input *ngIf="type !== 'password'; else password"
+           [tuiHintContent]="hintContent"
+           [tuiTextfieldCleaner]="allowClear"
+           [icon]="icon"
+           [iconAlign]="iconAlign"
+           [(ngModel)]="formValue">
+  {{ label }}
+  <span class="currency">{{ currency | tuiCurrency }}</span>
+  <span *ngIf="isRequired"
+        class="tui-required"></span>
+  <input tuiTextfield
+         [placeholder]="placeholder"
+         [type]="type"/>
+</tui-input>
+
+<tui-error ngDefaultControl
+           [(ngModel)]="formValue"
+           [error]="getErrorTips()">
+</tui-error>
+
+<ng-template #password>
+  <tui-input-password [tuiHintContent]="hintContent"
+                      [tuiTextfieldCleaner]="allowClear"
+                      [(ngModel)]="formValue">
+    {{ label }}
+    <span *ngIf="isRequired"
+          class="tui-required"></span>
+    <input tuiTextfield
+           [placeholder]="placeholder"
+           [type]="type"/>
+  </tui-input-password>
+</ng-template>

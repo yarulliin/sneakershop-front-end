@@ -1,0 +1,10 @@
+:host {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.admin {
+  width: 50%;
+  box-shadow: 0 0.25rem 1.5rem rgb(0 0 0 / 12%);
+}

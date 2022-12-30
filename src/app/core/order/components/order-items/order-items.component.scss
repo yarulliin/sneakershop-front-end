@@ -1,0 +1,52 @@
+@import "mixins";
+
+:host::ng-deep {
+  .tui-island:after {
+    content: none;
+  }
+}
+
+.orders {
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0.25rem 1.5rem rgb(0 0 0 / 12%);
+
+    > span:nth-of-type(even) {
+      text-align: right;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__info {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    > .text {
+      display: grid;
+      grid-gap: 0;
+    }
+  }
+
+  &__details {
+    display: grid;
+    text-align: right;
+  }
+
+  &__color {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-self: right;
+  }
+
+  &__item-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+}

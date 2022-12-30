@@ -1,0 +1,31 @@
+@import 'mixins';
+
+:host::ng-deep {
+  position: relative;
+
+  app-avatar {
+    margin-top: 16px;
+  }
+
+  app-icon {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    cursor: pointer;
+  }
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+
+  > :first-child {
+    padding-right: 16px;
+  }
+}
+
+.info {
+  @include grid(2, 16px, 16px);
+
+  margin-top: 16px;
+}

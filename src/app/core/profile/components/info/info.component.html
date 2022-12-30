@@ -1,0 +1,45 @@
+<ng-container *ngIf="user$ | async as user">
+  <app-info-edit *ngIf="isEdit; else infoView"
+                 [item]="user"
+                 (emitSave)="update($event)">
+  </app-info-edit>
+
+  <ng-template #infoView>
+    <app-info-view [user]="user"
+                   (emitEdit)="toggleEdit()"></app-info-view>
+  </ng-template>
+</ng-container>
+
+<app-accordion *ngIf="(user$ | async)?.orders as orders"
+               [items]="[{ label: 'Заказы' }]">
+  <ng-template>
+    <section class="orders">
+      <a *ngFor="let order of orders"
+         class="order"
+         tuiIsland>
+        <section class="order__info">
+          <span>{{ date | date: 'dd.MM.yyyy H:mm' }}</span>
+          <span *ngIf="order?.total">{{ order?.total }} {{ 'RUB' | tuiCurrency }}</span>
+        </section>
+
+        <a *ngFor="let item of order?.cart"
+           class="order__info"
+           tuiIsland>
+          <app-avatar [avatarUrl]="(item.brand | image: item.name)[0]"
+                      [size]="'m'"></app-avatar>
+          <section class="order__details">
+            <span>{{ item?.brand }} {{ item?.name }}</span>
+            <section class="order__item-parameters">
+              <span>Размер: {{ item?.size }}</span>
+              <span>Количество: {{ item?.quantity }}</span>
+              <span class="order__color">
+                Цвет: <div class="order__item-color"
+                           [style.backgroundColor]="item?.color"
+                           [tuiHint]="item?.color!"></div></span>
+            </section>
+          </section>
+        </a>
+      </a>
+    </section>
+  </ng-template>
+</app-accordion>

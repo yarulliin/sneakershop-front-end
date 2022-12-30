@@ -1,0 +1,27 @@
+<section class="product"
+         [formGroup]="form">
+  <app-input [formControlName]="ProductFormControlNames.ID"
+             label="Id"></app-input>
+  <app-input [formControlName]="ProductFormControlNames.BRAND"
+             label="Бренд"></app-input>
+  <app-input [formControlName]="ProductFormControlNames.NAME"
+             label="Название"></app-input>
+  <app-input [formControlName]="ProductFormControlNames.PRICE"
+             currency="RUB"
+             label="Цена"></app-input>
+  <app-files [formControlName]="ProductFormControlNames.PHOTO"
+             [max]="3"></app-files>
+  <section class="product__footer">
+    <section class="radio">
+      <app-radio [formControlName]="ProductFormControlNames.SEX"
+                 item="Male"
+                 label="Мужской"></app-radio>
+      <app-radio [formControlName]="ProductFormControlNames.SEX"
+                 item="Female"
+                 label="Женский"></app-radio>
+    </section>
+    <button tuiButton
+            appearance="secondary"
+            (click)="save()">Сохранить</button>
+  </section>
+</section>

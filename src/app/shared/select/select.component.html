@@ -1,0 +1,71 @@
+<ng-container *ngIf="multi; else defaultSelect">
+  <tui-multi-select *tuiLet="items$ | async"
+                    [tuiTextfieldExampleText]="label"
+                    [tuiTextfieldLabelOutside]="true"
+                    [tuiTextfieldSize]="size"
+                    [(ngModel)]="formValue"
+                    (searchChange)="onSearchChange($event)">
+    <ng-container *ngIf="placeholder">{{ placeholder }}</ng-container>
+    <ng-container *ngIf="withVirtualScroll; else defaultSelect">
+      <cdk-virtual-scroll-viewport *tuiDataList
+                                   tuiScrollable
+                                   class="scroll"
+                                   [itemSize]="items?.length">
+        <tui-data-list *ngIf="items$ | async; else loading"
+                       tuiMultiSelectGroup>
+          <button *cdkVirtualFor="let item of items$ | async"
+                  tuiOption
+                  [value]="isStringArray ? item : item[valueName]">
+            {{ isStringArray ? item : item[displayName] }}
+          </button>
+        </tui-data-list>
+      </cdk-virtual-scroll-viewport>
+    </ng-container>
+    <ng-template #defaultSelect>
+      <tui-data-list *tuiDataList
+                     tuiMultiSelectGroup>
+        <button *ngFor="let item of items$ | async; else loading"
+                tuiOption
+                [value]="isStringArray ? item : item[valueName]">
+          {{ isStringArray ? item : item[displayName] }}
+        </button>
+      </tui-data-list>
+    </ng-template>
+  </tui-multi-select>
+</ng-container>
+
+<ng-template #defaultSelect>
+  <tui-select *tuiLet="items$ | async"
+              [tuiTextfieldLabelOutside]="true"
+              [tuiTextfieldSize]="size"
+              [(ngModel)]="formValue">
+    <ng-container *ngIf="placeholder">{{ placeholder }}</ng-container>
+    <ng-container *ngIf="withVirtualScroll; else defaultSelect">
+      <cdk-virtual-scroll-viewport *tuiDataList
+                                   tuiScrollable
+                                   class="scroll"
+                                   [itemSize]="items?.length">
+        <tui-data-list *ngIf="items$ | async; else loading">
+          <button *cdkVirtualFor="let item of items$ | async"
+                  tuiOption
+                  [value]="isStringArray ? item : item[valueName]">
+            {{ isStringArray ? item : item[displayName] }}
+          </button>
+        </tui-data-list>
+      </cdk-virtual-scroll-viewport>
+    </ng-container>
+    <ng-template #defaultSelect>
+      <tui-data-list *tuiDataList>
+        <button *ngFor="let item of items$ | async; else loading"
+                tuiOption
+                [value]="isStringArray ? item : item[valueName]">
+          {{ isStringArray ? item : item[displayName] }}
+        </button>
+      </tui-data-list>
+    </ng-template>
+  </tui-select>
+</ng-template>
+
+<ng-template #loading>
+  <tui-loader class="tui-space_vertical-3 loader"></tui-loader>
+</ng-template>

@@ -1,0 +1,25 @@
+<a class="review"
+   tuiIsland
+   [formGroup]="form">
+  <app-input [formControlName]="ReviewFormControlNamesEnum.USER_NAME"
+             [isRequired]="true"
+             [allowClear]="true"
+             label="Имя"
+             placeholder="Введите имя"></app-input>
+  <app-input [formControlName]="ReviewFormControlNamesEnum.DESCRIPTION"
+             [allowClear]="true"
+             label="Комментарий"
+             placeholder="Введите комментарий"></app-input>
+  <app-rating [formControlName]="ReviewFormControlNamesEnum.RATE"
+              [isRequired]="true"
+              label="Рейтинг"></app-rating>
+  <section class="review__footer">
+    <button tuiButton
+            appearance="secondary"
+            (click)="cancelCreate()">Отмена</button>
+    <button tuiButton
+            appearance="primary"
+            [disabled]="isSaveButtonDisabled"
+            (click)="createReview()">Сохранить</button>
+  </section>
+</a>

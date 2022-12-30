@@ -1,0 +1,11 @@
+@import "mixins";
+
+.search-item {
+  @include grid(1, 16px);
+
+  > button {
+    display: flex;
+    justify-self: flex-end;
+    width: fit-content;
+  }
+}

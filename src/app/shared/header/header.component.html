@@ -1,0 +1,15 @@
+<a tuiIsland
+   class="header">
+  <app-icon class="header__logo"
+            iconName="logo"
+            [routerLink]="''"></app-icon>
+  <button *ngIf="withMenuButton"
+          class="header__menu"
+          tuiButton
+          type="button"
+          appearance="flat"
+          size="m">
+    <app-icon iconName="tuiIconMenuLarge"
+              (click)="toggleMenu($event, true)"></app-icon>
+  </button>
+</a>

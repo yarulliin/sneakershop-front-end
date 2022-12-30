@@ -1,0 +1,23 @@
+<a tuiIsland>
+  <app-stepper [config]="stepperConfig"
+               [activeItemIndex]="(activeItemIndex$ | async)!"
+               (emitChangeTab)="nextStep($event)"></app-stepper>
+  <app-order-items *ngIf="(activeItemIndex$ | async) === 0"
+                   [orders]="orders"></app-order-items>
+  <app-order-address *ngIf="(activeItemIndex$ | async) === 1"></app-order-address>
+  <app-order-payment *ngIf="(activeItemIndex$ | async) === 2"
+                     [total]="getTotal((discountAmount$ | async)?.discountAmount!)"
+                     (emitCheckDiscount)="checkDiscount($event)"></app-order-payment>
+
+  <button *ngIf="(activeItemIndex$ | async) !== 2"
+          tuiButton
+          appearance="secondary"
+          class="button"
+          (click)="nextStep()">Далее</button>
+  <button *ngIf="(activeItemIndex$ | async) === 2"
+          tuiButton
+          class="button"
+          appearance="primary"
+          [disabled]="!isFormValid"
+          (click)="buy()">Купить</button>
+</a>

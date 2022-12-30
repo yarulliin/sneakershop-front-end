@@ -1,0 +1,74 @@
+@import 'mixins';
+
+:host {
+  @include grid(1, 16px);
+
+  padding: 16px;
+
+  ::ng-deep {
+    .tui-island:after {
+      content: none;
+    }
+  }
+}
+
+.tui-island:before {
+  border: none;
+}
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 0.25rem 1.5rem rgb(0 0 0 / 12%);
+
+  &__info {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    > .text {
+      display: grid;
+      grid-gap: 0;
+    }
+  }
+
+  &__item {
+    padding-right: 16px;
+    margin-right: 32px;
+    border-right: 1px solid var(--tui-base-03);
+    text-align: right;
+    display: grid;
+    justify-self: right;
+  }
+
+  &__footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    padding-bottom: 16px;
+    justify-self: flex-end;
+  }
+
+  &__color {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-self: right;
+  }
+
+  &__item-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+
+  app-icon {
+    position: absolute;
+    right: 16px;
+    align-self: center;
+  }
+}
+
+.no-data {
+  justify-self: center;
+}

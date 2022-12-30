@@ -1,0 +1,14 @@
+<section [formGroup]="form"
+         class="payment">
+  <app-card formControlName="card"></app-card>
+  <section class="payment__discount">
+    <app-input #discount
+               formControlName="discount"
+               label="Промокод"
+               placeholder="Введите промокод"></app-input>
+    <button tuiButton
+            appearance="primary"
+            (click)="checkDiscount(discount.formValue)">Применить</button>
+  </section>
+  <span class="payment__total">Итого: {{ total }} {{ 'RUB' | tuiCurrency }}</span>
+</section>

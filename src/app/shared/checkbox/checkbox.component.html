@@ -1,0 +1,14 @@
+<tui-checkbox-block *ngIf="customCheckbox; else checkbox"
+                    [contentAlign]="contentAlign"
+                    [hideCheckbox]="hideCheckbox"
+                    [(ngModel)]="formValue"
+                    [size]="size">
+  {{ label }}
+</tui-checkbox-block>
+
+<ng-template #checkbox>
+  <tui-checkbox-labeled [(ngModel)]="formValue"
+                        [size]="size">
+    {{ label }}
+  </tui-checkbox-labeled>
+</ng-template>

@@ -1,0 +1,16 @@
+@import 'mixins';
+
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.b-form {
+  @include grid(1, 24px, 24px);
+
+  width: 25%;
+  margin-bottom: 24px;
+}

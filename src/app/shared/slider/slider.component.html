@@ -1,0 +1,25 @@
+<tui-input-range *ngIf="withRange; else defaultSlider"
+                 new
+                 [min]="min"
+                 [max]="max"
+                 [steps]="steps"
+                 [quantum]="quantum"
+                 [tuiTextfieldSize]="size"
+                 [tuiTextfieldLabelOutside]="!placeholder"
+                 [(ngModel)]="formValue">
+  {{ placeholder }}
+</tui-input-range>
+
+<ng-template #defaultSlider>
+  <tui-input-slider class="control"
+                    [min]="min"
+                    [max]="max"
+                    [steps]="steps"
+                    [quantum]="quantum"
+                    [tuiHintContent]="tooltip"
+                    [tuiTextfieldSize]="size"
+                    [tuiTextfieldLabelOutside]="!placeholder"
+                    [(ngModel)]="formValue">
+    {{ placeholder }}
+  </tui-input-slider>
+</ng-template>

@@ -1,0 +1,31 @@
+@import 'mixins';
+
+:host {
+  @include grid(1, 24px);
+
+  height: auto;
+  padding-bottom: 40px;
+}
+
+.sort {
+  justify-self: center;
+}
+
+.catalog-items {
+  @include grid(3, 40px, 80px);
+
+  width: max-content;
+  justify-self: center;
+
+  app-filters {
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  app-pagination {
+    margin-top: 16px;
+  }
+}

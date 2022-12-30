@@ -1,0 +1,22 @@
+<section class="orders">
+  <a *ngFor="let order of orders"
+     class="orders__item"
+     tuiIsland>
+    <section class="orders__info">
+      <app-avatar [avatarUrl]="(order.brand | image: order.name)[0]"
+                  [size]="'m'"></app-avatar>
+      <section class="orders__info text">
+        <span class="orders__title">{{ order?.brand }} {{ order?.name }}</span>
+        <span>{{ order.price.price }} {{ order.price.currency | tuiCurrency }}</span>
+      </section>
+    </section>
+    <section class="orders__details">
+      <span>Размер: {{ order?.size }}</span>
+      <span>Количество: {{ order?.quantity }}</span>
+      <span class="orders__color">
+        Цвет: <div class="orders__item-color"
+                   [style.backgroundColor]="order?.color"
+                   [tuiHint]="order?.color!"></div></span>
+    </section>
+  </a>
+</section>

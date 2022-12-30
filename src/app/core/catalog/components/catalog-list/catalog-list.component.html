@@ -1,0 +1,14 @@
+<ng-container *ngIf="catalogItems$ | async as catalogItems">
+  <section class="catalog-items">
+    <app-filters (emitSearch)="search($event)"></app-filters>
+    <app-catalog-item *ngFor="let item of catalogItems?.data"
+                      [item]="item"
+                      (click)="navigateToItem(item?._id!)"
+                      (emitAlert)="showAlert($event)"></app-catalog-item>
+  </section>
+
+  <app-pagination *ngIf="catalogItems?.totalElements! > catalogItems?.size!"
+                  [currentPage]="+catalogItems?.page!"
+                  [totalPages]="+catalogItems?.totalPages!"
+                  (emitChangePage)="getCatalogList($event)"></app-pagination>
+</ng-container>
