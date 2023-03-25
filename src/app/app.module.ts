@@ -5,10 +5,7 @@ import { RouterModule } from "@angular/router";
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 
-import { of } from "rxjs";
-
 import { TuiRootModule, TuiDialogModule, TUI_SANITIZER, TuiAlertModule } from "@taiga-ui/core";
-import { TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE } from '@taiga-ui/i18n';
 import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
 
 import { StoreModule } from '@ngrx/store';
@@ -57,10 +54,6 @@ import { httpInterceptorsProviders } from "./utils/providers/httpInterceptors.pr
     {
       provide: TUI_SANITIZER,
       useClass: NgDompurifySanitizer
-    },
-    {
-      provide: TUI_LANGUAGE,
-      useValue: of(TUI_RUSSIAN_LANGUAGE)
     },
   ],
   bootstrap: [AppComponent],
